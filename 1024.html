@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>扫码改需求</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <style>
+      html, body{
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+      #parent {
+        height: 100%;
+      }
+      #floater {
+        float: left;
+        height: 50%;
+        width: 100%;
+        margin-bottom: -50px;
+      }
+      #child {
+        clear: both;
+        margin-top: -1.5rem;
+        font-size: 3rem;
+        text-align: center;
+      }
+      .pm_logo{
+            width: 10rem;
+            position: fixed;
+            top: 0.3rem;
+            left: 0.3rem;
+        }
+      .text{
+          position: fixed;
+          left: 0;
+          bottom: 0.5rem;
+          width: 100%;
+          text-align: center;
+      }
+      #canvas{
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 10;
+      }
+    </style>
+
+  </head>
+  <body>
+  <canvas style="display: none;" id="canvas" width="800" height="600"></canvas>
+  <img id="pm_logo" onclick="Egg1()"  class="pm_logo" src="pm.png" />
+  <div id="parent">
+    <div id="floater"></div>
+    <div id="child">测试</div>
+  </div>
+  <div class="text">
+      <p>1024程序员节嗨皮哟</p>
+  </div>
+  <script>
+    var a = Math.random() + ""			//产生一个随机数
+
+    var rand1 = a.charAt(5)				//的到这个数的第五个字符(实际还是从0~9的数字)
+
+    quotes = new Array()			//创建消息数组
+
+    quotes[1] = '一顿早饭'				//这里分配十句随机出现的文本
+
+    quotes[2] = '一顿午饭'
+
+    quotes[3] = '给我加鸡腿'
+
+    quotes[4] = '一瓶可乐'
+
+    quotes[5] = '一瓶脉动'
+
+    quotes[6] = '一根棒棒糖'
+
+    quotes[7] = '送女友'
+
+    quotes[8] = '炸鸡'
+
+    quotes[9] = '一瓶可乐'
+
+    quotes[0] = '一根棒棒糖'
+    var quote = quotes[rand1]	//由随机数选择一句话
+    var textDom = document.getElementById('child')
+    textDom.innerText = quote
+  </script>
+
+  <script>
+      var Egg1Length = 0
+      var canvas = document.getElementById('canvas')
+      function Egg1() {
+          if (Egg1Length === 5) {
+              return
+          }
+          Egg1Length ++
+          if (Egg1Length > 4) {
+              alert('你发现彩蛋了。。。。')
+              canvas.style.display = 'block'
+              Egg1Length = 5
+          }
+      }
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+  </script>
+  <script src="BlockBlaster.js"></script>
+  </body>
+</html>
